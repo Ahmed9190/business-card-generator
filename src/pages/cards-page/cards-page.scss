@@ -1,0 +1,23 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 80px 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'card-page-header'
+    'card-page-contents';
+  // overflow-y: hidden;
+
+  .card-page-header {
+    grid-area: card-page-header;
+  }
+
+  .card-page-contents {
+    grid-area: card-page-contents;
+    display: flex;
+    justify-content: center;
+    height: 91vh;
+    overflow: auto;
+    flex-wrap: wrap;
+  }
+}

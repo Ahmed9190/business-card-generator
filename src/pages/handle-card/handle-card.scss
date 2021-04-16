@@ -1,0 +1,48 @@
+.handle-card-page-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 80px 1fr;
+  .handle-card-page {
+    background-image: url("../../assets/SVG/orange-curve.svg");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .handle-card-data-container {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 23px;
+      border-radius: 13px;
+      box-shadow: 0 0 10px #00000063;
+      width: 325px;
+      position: relative;
+      width: 700px;
+
+      .handled-card {
+        width: 400px;
+        height: 250px;
+        transform: translateY(-60%);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .handle-card-colors-container {
+        display: flex;
+        justify-content: space-evenly;
+        width: 90%;
+        margin: 10px;
+      }
+      .handle-card-inputs {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px 15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+.card-container {
+  height: 100%;
+  position: relative;
+  min-height: 250px;
+  height: 250px;
+  width: 400px;
+  // margin: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+
+  .card-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .left-card-section {
+      margin-top: 20px;
+    }
+    .right-card-section {
+      padding: 20px 0 0 5px;
+      .card-holder-name {
+        display: flex;
+        align-items: flex-start;
+        white-space: nowrap;
+      }
+      .card-holder-position {
+        // padding-left: 5px;
+        display: flex;
+      }
+    }
+  }
+  .card-navy-curve {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+  }
+  .card-colored-curve {
+    position: absolute;
+    bottom: 18px;
+    width: 75%;
+  }
+  .card-company-name {
+    position: absolute;
+    right: 15px;
+    text-align: right;
+    bottom: 30px;
+    z-index: 1;
+    color: #fff;
+    letter-spacing: 1.5px;
+    font-family: GillSans;
+    white-space: nowrap;
+  }
+}

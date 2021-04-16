@@ -1,0 +1,25 @@
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+
+  .f_l_name_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 10px;
+    justify-content: space-between;
+  }
+
+  .change-form {
+    cursor: pointer;
+    color: #5a5f69;
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 14px;
+
+    &:hover {
+      color: #102840;
+    }
+  }
+}

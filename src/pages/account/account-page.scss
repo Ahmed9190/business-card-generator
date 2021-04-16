@@ -1,0 +1,41 @@
+.account-page-container {
+  background-image: url("../../assets/SVG/navy-curve.svg"),
+    url("../../assets/SVG/orange-curve.svg");
+  background-position: right top, left bottom;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 35vh, 20vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form-header-logo {
+    position: absolute;
+    height: 60px;
+    top: 10px;
+    left: 20px;
+  }
+
+  .form-parent-container {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 30px 23px;
+    border-radius: 13px;
+    box-shadow: 0 0 10px #00000063;
+    width: 325px;
+  }
+  .form-logo {
+    height: 80px;
+    margin-bottom: 25px;
+  }
+  .login-form-title {
+    font-family: GillSans;
+    font-size: 30px;
+    margin-bottom: 25px;
+    color: #102840;
+    text-align: center;
+  }
+}

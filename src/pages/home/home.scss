@@ -1,0 +1,92 @@
+.home-container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 290px;
+  gap: 0px 0px;
+  grid-template-areas:
+    'header-main-container'
+    'carousel';
+  .show-all-div {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 10px 15px 0;
+  }
+}
+
+.header-main-container {
+  grid-area: header-main-container;
+  background-image: url('../../assets/images/business.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr;
+  // align-content: center;
+  gap: 0px 0px;
+  grid-template-areas:
+    'header'
+    'main';
+
+  .home-header {
+    grid-area: header;
+    display: flex;
+    padding: 20px 20px;
+    justify-content: space-between;
+
+    .header-logo {
+      height: 100%;
+    }
+  }
+
+  .main {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    // h1,
+    // h2 {
+    //   color: #fff;
+    // }
+    span {
+      color: #ed8d4c;
+      // margin-bottom: 20px;
+      &:nth-child(1) {
+        font-weight: bold;
+        font-size: 5vw;
+        margin-bottom: 10px;
+      }
+      &:nth-child(2) {
+        font-size: 3vw;
+      }
+    }
+    .create-one-button {
+      margin-top: 50px;
+      border-radius: 30px;
+      background-color: #fff;
+      padding: 10px 50px;
+      font-size: 22px;
+      border: none;
+      border: solid 1px transparent;
+      transition: 0.5s;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        background-color: transparent;
+        border: solid 1px #fff;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.carousel {
+  grid-area: carousel;
+  overflow-x: hidden;
+  // margin-top: 10px;
+}
