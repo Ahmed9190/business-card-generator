@@ -23,6 +23,7 @@ const CardData = ({ Leading, text, fontSize, focus }) => {
           minHeight: 11,
           maxWidth: 150,
           width: !text ? 150 : "auto",
+          direction: "rtl", //to be aligned right
         }}
       >
         {text}

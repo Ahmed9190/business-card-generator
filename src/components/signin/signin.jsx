@@ -1,30 +1,35 @@
-import React, { useState } from 'react';
-import './signin.scss';
-import CustomInput from '../custom-input/custom-input';
-import CustomButton from '../custom-button/custom-button';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import "./signin.scss";
+import CustomInput from "../custom-input/custom-input";
+import CustomButton from "../custom-button/custom-button";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import Toast from "../../utils/toastify";
 
 const Signin = () => {
   const [signinData, setSigninData] = useState({});
   const { push } = useHistory();
 
-  const handleSubmitForm = e => {
+  const handleSubmitForm = (e) => {
     e.preventDefault();
     console.log(signinData);
-    axios.post('/login', signinData).then(({ data: res }) => {
-      console.log(res);
-    });
+    axios
+      .post("/signin", signinData)
+      .then(({ data: token }) => {
+        localStorage.setItem("jwt", token);
+        push("/");
+      })
+      .catch((e) => Toast(e.response.data, "error"));
   };
 
   return (
     <form onSubmit={handleSubmitForm} className="form-container">
       <CustomInput
-        placeholder="Username"
+        placeholder="Email"
         onChange={({ target: { value, name } }) =>
           setSigninData({ ...signinData, [name]: value })
         }
-        name="username"
+        name="email"
         required
       />
       <CustomInput
@@ -37,7 +42,7 @@ const Signin = () => {
         password
       />
 
-      <span className="change-form" onClick={() => push('/account/signup')}>
+      <span className="change-form" onClick={() => push("/account/signup")}>
         Don't have an account? Sign up
       </span>
 

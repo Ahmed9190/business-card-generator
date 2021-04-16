@@ -2,8 +2,22 @@
   height: 100%;
   display: flex;
   overflow-x: auto;
-  overflow-y: hidden;
   align-items: center;
+  position: relative;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  padding-right: 20px;
+
+  .grap-to-scroll {
+    cursor: grab;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    &:active {
+      cursor: grabbing;
+    }
+  }
 
   &::-webkit-scrollbar {
     height: 0;
@@ -22,7 +36,7 @@
       display: flex;
       align-items: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
       background-color: #fff;
       border-radius: 50%;
       padding: 13px;
@@ -31,15 +45,41 @@
       cursor: pointer;
     }
   }
+  .show-all-div {
+    position: absolute;
+    right: 10px;
+    bottom: 7px;
+    z-index: 2;
+    // display: flex;
+    // justify-content: flex-end;
+    // padding: 0 10px 15px 0;
+    .show-all-button {
+      color: #379bf8;
+      font-weight: 500;
+      margin-right: 20px;
+    }
+  }
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 .wrapper .horizontal-slider-item {
-  min-width: 400px;
-  min-height: 250px;
+  // min-width: 400px;
+  // min-height: 250px;
   margin-left: 20px;
   box-sizing: border-box;
-  cursor: grab;
-  &:active {
-    cursor: grabbing;
+}
+
+@media only screen and (max-width: 600px) {
+  .grap-to-scroll {
+    display: none;
   }
 }

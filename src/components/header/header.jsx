@@ -1,15 +1,16 @@
-import React from 'react';
-import logo from '../../assets/SVG/logo.svg';
-import { Link, useHistory } from 'react-router-dom';
-import CustomButton from './../../components/custom-button/custom-button';
-import './header.scss';
+import React from "react";
+import logo from "../../assets/SVG/logo.svg";
+import { Link, useHistory } from "react-router-dom";
+import CustomButton from "./../../components/custom-button/custom-button";
+import "./header.scss";
 
-import searchIcon from '../../assets/images/search.svg';
+import searchIcon from "../../assets/images/search.svg";
 
 const Header = ({ solid, search }) => {
   const { push } = useHistory();
+  const hasToken = localStorage.getItem("jwt");
   return (
-    <div className="header" style={solid ? { backgroundColor: '#102840' } : {}}>
+    <div className="header" style={solid ? { backgroundColor: "#102840" } : {}}>
       <Link to="/">
         <img src={logo} alt="logo" className="header-logo" />
       </Link>
@@ -26,13 +27,16 @@ const Header = ({ solid, search }) => {
           </div>
         )}
         <CustomButton
-          text="LOGIN"
+          text={hasToken ? "SIGN OUT" : "SIGN IN"}
           style={{
             marginBottom: 10,
             marginTop: 10,
           }}
           onClick={() => {
-            push('/account/signin');
+            if (hasToken) {
+              localStorage.removeItem("jwt");
+              push("/");
+            } else push("/account/signin");
           }}
         />
       </div>

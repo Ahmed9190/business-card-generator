@@ -2,21 +2,16 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 290px;
+  grid-template-rows: 1fr 300px;
   gap: 0px 0px;
   grid-template-areas:
-    'header-main-container'
-    'carousel';
-  .show-all-div {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 10px 15px 0;
-  }
+    "header-main-container"
+    "carousel";
 }
 
 .header-main-container {
   grid-area: header-main-container;
-  background-image: url('../../assets/images/business.jpg');
+  background-image: url("../../assets/images/business.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -26,8 +21,8 @@
   // align-content: center;
   gap: 0px 0px;
   grid-template-areas:
-    'header'
-    'main';
+    "header"
+    "main";
 
   .home-header {
     grid-area: header;
@@ -89,4 +84,5 @@
   grid-area: carousel;
   overflow-x: hidden;
   // margin-top: 10px;
+  // overflow-y: hidden;
 }

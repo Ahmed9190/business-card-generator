@@ -4,8 +4,8 @@
   grid-template-rows: 80px 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    'card-page-header'
-    'card-page-contents';
+    "card-page-header"
+    "card-page-contents";
   // overflow-y: hidden;
 
   .card-page-header {
@@ -13,11 +13,17 @@
   }
 
   .card-page-contents {
+    height: 250px;
     grid-area: card-page-contents;
     display: flex;
     justify-content: center;
     height: 91vh;
     overflow: auto;
     flex-wrap: wrap;
+    align-content: flex-start;
+    .card-page-card-container {
+      height: 250px;
+      margin: 10px;
+    }
   }
 }

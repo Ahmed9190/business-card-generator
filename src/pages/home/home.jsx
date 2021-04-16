@@ -1,10 +1,28 @@
-import './home.scss';
-import HorizontalSlider from './../../components/horizontal-slider/horizontal-slider';
-import Header from '../../components/header/header';
-import { Link } from 'react-router-dom';
-import CustomButton from '../../components/custom-button/custom-button';
+import "./home.scss";
+import HorizontalSlider from "./../../components/horizontal-slider/horizontal-slider";
+import Header from "../../components/header/header";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { headers } from "./../../utils/axios";
 
 function HomePage({ history: { push } }) {
+  const [hasCard, setHasCard] = useState(null);
+  const checkCardExistance = () => {
+    if (localStorage.getItem("jwt"))
+      axios
+        .post("/read-my-card", {}, headers)
+        .then(({ data: res }) => {
+          if (typeof res === "object") setHasCard(true);
+          else setHasCard(false);
+        })
+        .catch((e) => setHasCard(false));
+  };
+  useEffect(() => {
+    if (!localStorage.getItem("jwt")) setHasCard(false);
+    else checkCardExistance();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [localStorage.getItem("jwt")]);
+
   return (
     <div className="home-container">
       <div className="header-main-container">
@@ -13,23 +31,23 @@ function HomePage({ history: { push } }) {
         {/* </div> */}
         <div className="main">
           <span>Business Card Generator</span>
-          <span>Want a free card ?</span>
+          {!hasCard && <span>Want a free card ?</span>}
           <button
             className="create-one-button"
-            onClick={() => push('/card/create')}
+            onClick={() =>
+              push(`/card/${!hasCard === false ? "edit" : "create"}`)
+            }
           >
-            Create one
+            {typeof hasCard !== "boolean"
+              ? ""
+              : !hasCard
+              ? "Create one"
+              : "Edit card"}
           </button>
         </div>
       </div>
       <div className="carousel">
         <HorizontalSlider />
-      </div>
-      <div className="show-all-div">
-        <Link to="/CardsPage">
-          {/* <span className="show-all-button"></span> */}
-          <CustomButton text="Show All" style={{ padding: '7px' }} />
-        </Link>
       </div>
     </div>
   );

@@ -129,9 +129,10 @@ export const measureTextWidth = (str, fontSize) => {
     0.5890625,
   ];
   const avg = 0.5279276315789471;
+
   return str
     ? str
-        .split("")
+        ?.split("")
         .map((c) =>
           c.charCodeAt(0) < widths.length ? widths[c.charCodeAt(0)] : avg
         )

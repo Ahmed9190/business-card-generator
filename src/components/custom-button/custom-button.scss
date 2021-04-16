@@ -8,6 +8,7 @@
   transition: 0.5s;
   cursor: pointer;
   letter-spacing: 1.7px;
+  white-space: nowrap;
 
   &:focus {
     outline: none;

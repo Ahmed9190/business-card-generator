@@ -1,3 +1,9 @@
 .App {
   height: 100vh;
+  .Toastify__toast--success {
+    background-color: #27ae60;
+  }
+  .Toastify__toast--error {
+    background-color: #e74c3c;
+  }
 }
