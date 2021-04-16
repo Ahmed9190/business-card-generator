@@ -12,13 +12,15 @@ const Signin = () => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    console.log(signinData);
     axios
       .post("/signin", signinData)
       .then(({ data: token }) => {
         localStorage.setItem("jwt", token);
-        push("/");
       })
+      .then(() => {
+        window.location.href = "/";
+      })
+      // .then(() => push("/"))
       .catch((e) => Toast(e.response.data, "error"));
   };
 

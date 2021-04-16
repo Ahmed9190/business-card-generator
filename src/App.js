@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.scss";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,6 +23,7 @@ function App() {
               <Route path="/account/" component={AccountPage} />
               <Route path="/card/:action" component={HandleCard} />
               <Route exact path="/cards-page" component={CardsPage} />
+              {/* <Route render={() => <Redirect to="/" />} /> */}
             </Suspense>
           </Switch>
         </main>

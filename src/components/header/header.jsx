@@ -3,12 +3,19 @@ import logo from "../../assets/SVG/logo.svg";
 import { Link, useHistory } from "react-router-dom";
 import CustomButton from "./../../components/custom-button/custom-button";
 import "./header.scss";
-
 import searchIcon from "../../assets/images/search.svg";
 
-const Header = ({ solid, search }) => {
+const Header = ({
+  solid,
+  search,
+  favourite,
+  setSearchField,
+  favouriteOnly,
+  setFavouriteOnly,
+}) => {
   const { push } = useHistory();
   const hasToken = localStorage.getItem("jwt");
+
   return (
     <div className="header" style={solid ? { backgroundColor: "#102840" } : {}}>
       <Link to="/">
@@ -17,13 +24,26 @@ const Header = ({ solid, search }) => {
       <div className="button-and-search-box">
         {search && (
           <div className="search-box-contant">
-            <input placeholder="Search..." className="search-box" />
+            <input
+              placeholder="Search..."
+              className="search-box"
+              onChange={({ target: { value } }) => setSearchField(value)}
+            />
             <img
               src={searchIcon}
               alt="searchIcon"
               width="20"
               className="searchIcon"
             />
+          </div>
+        )}
+        {favourite && (
+          <div
+            className="header-favourite-button noselect"
+            style={favouriteOnly ? { color: "#F8961E" } : null}
+            onClick={() => setFavouriteOnly(!favouriteOnly)}
+          >
+            &#9733;
           </div>
         )}
         <CustomButton
@@ -34,8 +54,8 @@ const Header = ({ solid, search }) => {
           }}
           onClick={() => {
             if (hasToken) {
+              window.location.href = "/";
               localStorage.removeItem("jwt");
-              push("/");
             } else push("/account/signin");
           }}
         />

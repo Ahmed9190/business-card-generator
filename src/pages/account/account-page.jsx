@@ -6,7 +6,6 @@ import { Route, Link } from "react-router-dom";
 import Signup from "./../../components/signup/signup";
 
 const AccountPage = ({ match: { url } }) => {
-  // console.log(props);
   return (
     <div className="account-page-container">
       <Link to="/">

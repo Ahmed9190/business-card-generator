@@ -16,13 +16,6 @@ const HorizontalSlider = () => {
     scrollX: 0,
   });
 
-  // useEffect(() => {
-  //   console.log(
-  //     "x",
-
-  //   );
-  // }, [scrollData]);
-
   function clearSelection() {
     if (document.selection && document.selection.empty) {
       document.selection.empty();

@@ -32,5 +32,15 @@
         font-size: 15px;
       }
     }
+    .header-favourite-button {
+      background-color: #f1f1f3;
+      line-height: 10px;
+      padding: 10px 7px;
+      font-size: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 3px #00000015;
+      cursor: pointer;
+      margin-right: 20px;
+    }
   }
 }

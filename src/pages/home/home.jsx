@@ -1,27 +1,29 @@
-import "./home.scss";
 import HorizontalSlider from "./../../components/horizontal-slider/horizontal-slider";
 import Header from "../../components/header/header";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { headers } from "./../../utils/axios";
+import "./home.scss";
 
 function HomePage({ history: { push } }) {
   const [hasCard, setHasCard] = useState(null);
+
   const checkCardExistance = () => {
-    if (localStorage.getItem("jwt"))
-      axios
-        .post("/read-my-card", {}, headers)
-        .then(({ data: res }) => {
-          if (typeof res === "object") setHasCard(true);
-          else setHasCard(false);
-        })
-        .catch((e) => setHasCard(false));
+    axios
+      .post("/read-my-card", {}, headers)
+      .then(({ data: res }) => {
+        if (typeof res === "object") setHasCard(true);
+        else setHasCard(false);
+      })
+      .catch((e) => {
+        setHasCard(false);
+      });
   };
+
   useEffect(() => {
     if (!localStorage.getItem("jwt")) setHasCard(false);
     else checkCardExistance();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [localStorage.getItem("jwt")]);
+  }, []);
 
   return (
     <div className="home-container">

@@ -18,8 +18,14 @@ const HandleCard = () => {
     push,
     location: { pathname },
   } = useHistory();
+
   let isEditing = pathname.includes("edit");
+
   useEffect(() => {
+    if (!localStorage.getItem("jwt")) {
+      Toast("You have to signin first", "error");
+      push("/account/signin");
+    }
     if (isEditing)
       axios
         .post("/read-my-card", {}, headers)
@@ -88,7 +94,6 @@ const HandleCard = () => {
   };
 
   //TO-DO: pathname.includes("edit")&& he has card data redirect to home
-  console.log(selectedColorIndex);
   return (
     <div className="handle-card-page-container">
       <Header solid />
