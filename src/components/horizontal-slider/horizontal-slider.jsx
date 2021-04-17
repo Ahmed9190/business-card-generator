@@ -76,10 +76,10 @@ const HorizontalSlider = () => {
     <div className="wrapper noselect">
       <div className="arrows-container">
         <div className="arrow-circle" onClick={() => handleClickArrow("left")}>
-          <img src={arrowLeft} alt="arrow-left" height={15} />
+          <img src={arrowLeft} alt="arrow-left" height={15} width="auto" />
         </div>
         <div className="arrow-circle" onClick={() => handleClickArrow("right")}>
-          <img src={arrowRight} alt="arrow-right" height={15} />
+          <img src={arrowRight} alt="arrow-right" height={15} width="auto" />
         </div>
       </div>
       <div

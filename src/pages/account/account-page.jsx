@@ -1,9 +1,10 @@
-import React from "react";
+import React, { lazy } from "react";
 import "./account-page.scss";
 import logo from "../../assets/SVG/logo.svg";
-import Signin from "./../../components/signin/signin";
 import { Route, Link } from "react-router-dom";
-import Signup from "./../../components/signup/signup";
+
+const Signin = lazy(() => import("./../../components/signin/signin"));
+const Signup = lazy(() => import("./../../components/signup/signup"));
 
 const AccountPage = ({ match: { url } }) => {
   return (

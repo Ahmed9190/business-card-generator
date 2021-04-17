@@ -88,13 +88,15 @@ const CardsPage = () => {
                     hasWhatsapp={has_whatsapp}
                   />
                 </div>
-                <div
-                  className="favourite-button noselect"
-                  style={isStarred ? { color: "#F8961E" } : null}
-                  onClick={() => handleClickStar(isStarred, c_id)}
-                >
-                  &#9733;
-                </div>
+                {localStorage.getItem("jwt") && (
+                  <div
+                    className="favourite-button noselect"
+                    style={isStarred ? { color: "#F8961E" } : null}
+                    onClick={() => handleClickStar(isStarred, c_id)}
+                  >
+                    &#9733;
+                  </div>
+                )}
               </div>
             );
           }

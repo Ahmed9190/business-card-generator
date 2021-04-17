@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./signup.scss";
 import CustomInput from "../custom-input/custom-input";
 import CustomButton from "../custom-button/custom-button";
@@ -8,7 +8,23 @@ import Toast from "../../utils/toastify";
 
 const Signup = () => {
   const [signupData, setSignupData] = useState({});
+  const passwordRef = useRef();
   const { push } = useHistory();
+
+  useEffect(() => {
+    CheckPassword();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signupData]);
+
+  const CheckPassword = () => {
+    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    const isMatched = passwordPattern.test(signupData.password);
+    if (!isMatched && signupData.password?.length >= 8) {
+      passwordRef.current?.setCustomValidity(
+        "Your password must contains at least one numeric digit, one uppercase and one lowercase letter"
+      );
+    } else passwordRef.current?.setCustomValidity("");
+  };
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
@@ -30,6 +46,7 @@ const Signup = () => {
       type: "fname",
       // style: { width: "42.5%" },
       required: true,
+      minLength: 2,
     },
     {
       placeholder: "Last Name",
@@ -37,6 +54,7 @@ const Signup = () => {
       type: "lname",
       // style: { width: "42.5%" },
       required: true,
+      minLength: 2,
     },
   ];
 
@@ -53,6 +71,8 @@ const Signup = () => {
       type: "password",
       password: true,
       required: true,
+      minLength: 8,
+      ref: passwordRef,
     },
   ];
 

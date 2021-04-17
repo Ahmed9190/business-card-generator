@@ -19,7 +19,13 @@ const Header = ({
   return (
     <div className="header" style={solid ? { backgroundColor: "#102840" } : {}}>
       <Link to="/">
-        <img src={logo} alt="logo" className="header-logo" />
+        <img
+          src={logo}
+          alt="logo"
+          className="header-logo"
+          height="60px"
+          width="auto"
+        />
       </Link>
       <div className="button-and-search-box">
         {search && (

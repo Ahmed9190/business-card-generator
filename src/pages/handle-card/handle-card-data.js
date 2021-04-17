@@ -23,18 +23,21 @@ export const cardInputsData = (
     name: "f_name",
     type: "fname",
     required: true,
+    minLength: 2,
   },
   {
     placeholder: "Last Name",
     name: "l_name",
     type: "lname",
     required: true,
+    minLength: 2,
   },
   {
     placeholder: "Position / Role",
     name: "position",
     type: "text",
     required: true,
+    minLength: 2,
   },
   {
     placeholder: "Email",
@@ -50,6 +53,8 @@ export const cardInputsData = (
     Icon: whatsapp,
     activedIcon: activedWhatsappIcon,
     onClickIcon: onClickWhatsappIcon,
+    minLength: 10,
+    maxLength: 10,
   },
   {
     placeholder: "Company Name",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./signin.scss";
 import CustomInput from "../custom-input/custom-input";
 import CustomButton from "../custom-button/custom-button";
@@ -8,7 +8,23 @@ import Toast from "../../utils/toastify";
 
 const Signin = () => {
   const [signinData, setSigninData] = useState({});
+  const passwordRef = useRef();
   const { push } = useHistory();
+
+  useEffect(() => {
+    CheckPassword();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signinData]);
+
+  const CheckPassword = () => {
+    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    const isMatched = passwordPattern.test(signinData.password);
+    if (!isMatched && signinData.password?.length >= 8) {
+      passwordRef.current?.setCustomValidity(
+        "Your password must contains at least one numeric digit, one uppercase and one lowercase letter"
+      );
+    } else passwordRef.current?.setCustomValidity("");
+  };
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
@@ -31,11 +47,14 @@ const Signin = () => {
         onChange={({ target: { value, name } }) =>
           setSigninData({ ...signinData, [name]: value })
         }
+        type="email"
         name="email"
         required
       />
       <CustomInput
+        ref={passwordRef}
         placeholder="Password"
+        minLength={8}
         onChange={({ target: { value, name } }) =>
           setSigninData({ ...signinData, [name]: value })
         }
