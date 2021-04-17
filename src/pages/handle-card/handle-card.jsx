@@ -23,7 +23,7 @@ const HandleCard = () => {
 
   useEffect(() => {
     if (!localStorage.getItem("jwt")) {
-      Toast("You have to signin first", "error");
+      Toast("You have to sign in first", "warning");
       push("/account/signin");
     }
     if (isEditing)
@@ -39,6 +39,7 @@ const HandleCard = () => {
           }
         )
         .catch((e) => Toast(e.resonse.data, "error"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEditing, pathname]);
 
   const onClickWhatsappIcon = () => setHasWhatsapp(!hasWhatsapp);

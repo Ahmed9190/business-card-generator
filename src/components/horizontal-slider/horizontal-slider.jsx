@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./horizontal-slider.scss";
 import arrowLeft from "../../assets/SVG/arrow-left.svg";
 import arrowRight from "../../assets/SVG/arrow-right.svg";
@@ -6,11 +6,12 @@ import Card from "../card/card";
 import { cardColors } from "./../../pages/handle-card/handle-card-data";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Toast from "./../../utils/toastify";
 
 const HorizontalSlider = () => {
   const [cards, setCards] = useState([]);
-  const HorizontalSliderRef = React.useRef();
-  const [scrollData, setScrollData] = React.useState({
+  const HorizontalSliderRef = useRef();
+  const [scrollData, setScrollData] = useState({
     isScrolling: false,
     clientX: 0,
     scrollX: 0,
@@ -26,9 +27,12 @@ const HorizontalSlider = () => {
   }
 
   useEffect(() => {
-    axios.get("read-cards").then(({ data: cards }) => {
-      setCards(cards.slice(0, 10));
-    });
+    axios
+      .get("read-cards")
+      .then(({ data }) => {
+        setCards(data.slice(0, 10));
+      })
+      .catch((e) => Toast("There is a problem with the Internet", "error"));
   }, []);
 
   const onMouseDown = (e) => {
@@ -67,7 +71,7 @@ const HorizontalSlider = () => {
     if (arrowName === "left") for (let i = 0; i < 420; i++) moveScroll("-", i);
     else for (let i = 0; i < 420; i++) moveScroll("+", i);
   };
-
+  debugger;
   return (
     <div className="wrapper noselect">
       <div className="arrows-container">

@@ -31,7 +31,9 @@ const CardsPage = () => {
       .then(({ data: cards }) => {
         setCards(cards);
       })
-      .then(fetchFavs)
+      .then(() => {
+        if (localStorage.getItem("jwt")) fetchFavs();
+      })
       .catch((e) => {
         Toast(e.response.data, "error");
       });
@@ -69,7 +71,7 @@ const CardsPage = () => {
         <Header
           solid
           search
-          favourite
+          favourite={!!localStorage.getItem("jwt")} //check if signed in
           {...{ setSearchField, favouriteOnly, setFavouriteOnly }}
         />
       </div>
