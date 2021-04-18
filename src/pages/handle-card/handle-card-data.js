@@ -41,9 +41,21 @@ export const cardInputsData = (
     minLength: 2,
   },
   {
+    placeholder: "Address",
+    name: "address",
+    type: "text",
+    required: true,
+  },
+  {
     placeholder: "Email",
     name: "email",
     type: "email",
+    required: true,
+  },
+  {
+    placeholder: "Website",
+    name: "website",
+    type: "text",
     required: true,
   },
   {
@@ -59,24 +71,6 @@ export const cardInputsData = (
     ref: phoneRef,
   },
   {
-    placeholder: "Company Name",
-    name: "compnay_name",
-    type: "text",
-    required: true,
-  },
-  {
-    placeholder: "Address",
-    name: "address",
-    type: "text",
-    required: true,
-  },
-  {
-    placeholder: "Website",
-    name: "website",
-    type: "text",
-    required: true,
-  },
-  {
     placeholder: "Facebook",
     name: "fb",
     type: "text",
@@ -85,6 +79,12 @@ export const cardInputsData = (
   {
     placeholder: "Instagram",
     name: "insta",
+    type: "text",
+    required: true,
+  },
+  {
+    placeholder: "Company Name",
+    name: "compnay_name",
     type: "text",
     required: true,
   },
