@@ -16,7 +16,8 @@ export const cardColors = [
 
 export const cardInputsData = (
   activedWhatsappIcon = false,
-  onClickWhatsappIcon
+  onClickWhatsappIcon,
+  phoneRef
 ) => [
   {
     placeholder: "First Name",
@@ -55,6 +56,7 @@ export const cardInputsData = (
     onClickIcon: onClickWhatsappIcon,
     minLength: 10,
     maxLength: 10,
+    ref: phoneRef,
   },
   {
     placeholder: "Company Name",

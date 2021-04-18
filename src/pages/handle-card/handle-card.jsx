@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "./../../components/header/header";
 import "./handle-card.scss";
 import CustomInput from "./../../components/custom-input/custom-input";
@@ -18,8 +18,19 @@ const HandleCard = () => {
     push,
     location: { pathname },
   } = useHistory();
+  const phoneRef = useRef();
 
   let isEditing = pathname.includes("edit");
+
+  const validatePhoneNum = (phone_num) => /^[0-9]*$/.test(phone_num);
+
+  useEffect(() => {
+    if (!validatePhoneNum(cardData?.phone_num))
+      phoneRef.current.setCustomValidity(
+        "The phone number must be numbers only"
+      );
+    else phoneRef.current.setCustomValidity("");
+  }, [cardData]);
 
   useEffect(() => {
     if (!localStorage.getItem("jwt")) {
@@ -130,7 +141,7 @@ const HandleCard = () => {
             ))}
           </div>
           <form onSubmit={handleSubmit} className="handle-card-inputs">
-            {cardInputsData(hasWhatsapp, onClickWhatsappIcon).map(
+            {cardInputsData(hasWhatsapp, onClickWhatsappIcon, phoneRef).map(
               (props, key) => (
                 <CustomInput
                   key={key}
