@@ -15,6 +15,12 @@ const readFavouriteCards = require("./controllers/favourite/read-favourite-cards
 const deleteFavouriteCard = require("./controllers/favourite/delete-favourite-card");
 const searchCard = require("./controllers/card-crud/search-card");
 const readMyCards = require("./controllers/card-crud/read-my-card");
+// const bcrypt = require("bcrypt");
+
+// const saltRounds = 10;
+// const password = "Ahmed123#";
+// const hash = bcrypt.hashSync(password, saltRounds);
+// console.log(hash);
 
 //middlewares
 app.use(compression());

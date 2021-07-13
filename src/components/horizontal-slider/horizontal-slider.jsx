@@ -71,7 +71,6 @@ const HorizontalSlider = () => {
     if (arrowName === "left") for (let i = 0; i < 420; i++) moveScroll("-", i);
     else for (let i = 0; i < 420; i++) moveScroll("+", i);
   };
-  debugger;
   return (
     <div className="wrapper noselect">
       <div className="arrows-container">

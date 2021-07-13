@@ -2,6 +2,7 @@ const db = require("../../utils/db");
 
 const updateCard = async (req, res) => {
   try {
+    console.log(req.body);
     const { u_id } = req.authData;
     const card = db("cards").where({ u_id });
     if ((await card).length) card.update(req.body);
